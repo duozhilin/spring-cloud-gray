@@ -12,14 +12,14 @@ import cn.springcloud.gray.server.service.AbstractGrayService;
 import cn.springcloud.gray.server.service.EurekaGrayService;
 import com.netflix.discovery.EurekaClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConditionalOnBean(EurekaClient.class)
+@ConditionalOnClass(name = "org.springframework.cloud.netflix.eureka.serviceregistry.EurekaRegistration")
 public class GrayServiceEurekaAutoConfiguration {
 
     private final EurekaClient eurekaClient;
